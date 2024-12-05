@@ -95,6 +95,11 @@
 				<label for="prenom">Prénom</label>
 				<input type="text" id="prenom" name="prenom" required />
 			</div>
+			<select id="typeUser" name="typeUser">
+				<option value="etudiant">Etudiant</option>
+				<option value="professeur">Professeur</option>
+				<option value="administration">Administration</option>
+			</select>
 			<div class="form-group">
 				<label for="motdepasse">Mot de passe</label>
 				<input type="password" id="motdepasse" name="motdepasse" required />
