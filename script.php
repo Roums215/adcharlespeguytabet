@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['validerInscrire'])) {
     // Récupérer les données envoyées par le formulaire
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
-    $id = $nom . "." . $prenom;
+    $id = $prenom . "." . $nom;
     $email = $id . "@charlespeguy.org";
     $mot_de_passe = $_POST["motdepasse"];
     $organizational_unit = $_POST["typeUser"];
