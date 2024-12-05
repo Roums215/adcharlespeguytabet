@@ -17,11 +17,11 @@ if ($conn->connect_error) {
 function generateRandomPassword($length = 12)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?';
-    $password = '';
+    $randomPassword = '';
     for ($i = 0; $i < $length; $i++) {
-        $password .= $characters[random_int(0, strlen($characters) - 1)];
+        $randomPassword .= $characters[random_int(0, strlen($characters) - 1)];
     }
-    return $password;
+    return $randomPassword;
 }
 
 // Traiter les données du formulaire
@@ -36,17 +36,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['validerInscrire'])) {
     // Récupérer les données envoyées par le formulaire
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
-    $id = $prenom . "." . $nom;
-    $email = $id . "@charlespeguy.org";
-    $mot_de_passe = generateRandomPassword(12);  // Génération d'un mot de passe aléatoire
-    $organizational_unit = $_POST["typeUser"];
+    $id = $prenom . "." . $nom; // Création de l'ID utilisateur
+    $email = $id . "@charlespeguy.org"; // Email généré
+    $passwordGenerated = generateRandomPassword(12);  // Génération d'un mot de passe aléatoire
+    $organizationalUnit = $_POST["typeUser"]; // Unité organisationnelle
 
     // Préparer la requête avec les paramètres
-    $stmt->bind_param("ssssss", $id, $nom, $prenom, $email, $mot_de_passe, $organizational_unit);
+    $stmt->bind_param("ssssss", $id, $nom, $prenom, $email, $passwordGenerated, $organizationalUnit);
 
     // Exécution de la requête
     if ($stmt->execute()) {
-        echo "Compte créé avec succès pour $prenom $nom. Le mot de passe généré est : $mot_de_passe";
+        echo "Compte créé avec succès pour $prenom $nom. Le mot de passe généré est : $passwordGenerated";
     } else {
         echo "Erreur : " . $stmt->error;
     }
