@@ -86,9 +86,9 @@
 </head>
 
 <body>
-	<div class="container creerUser" id="creerUser" action="form.php" method="_POST">
+	<div class="container creerUser" id="creerUser">
 		<h2>Créer un compte</h2>
-		<form>
+		<form action="script.php" method="POST">
 			<div class="form-group">
 				<label for="nom">Nom</label>
 				<input type="text" id="nom" name="nom" required />
@@ -109,7 +109,7 @@
 				<label for="motdepasse">Mot de passe</label>
 				<input type="password" id="motdepasse" name="motdepasse" required />
 			</div>
-			<button type="submit" name="validerInscrire" name="validerInscrire">S'inscrire</button>
+			<button type="submit" name="validerInscrire" id="validerInscrire">S'inscrire</button>
 		</form>
 	</div>
 
@@ -148,6 +148,7 @@
 			</tbody>
 		</table>
 	</div>
+	<?php include 'script.php'; ?>
 </body>
 
 </html>
