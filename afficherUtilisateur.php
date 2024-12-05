@@ -56,26 +56,61 @@ try {
     </h1>
     <table>
         <thead>
-            <?php foreach ($users as $user): ?>
+            <thead>
                 <tr>
-                    <td><?= htmlspecialchars($user['id']) ?></td>
-                    <td><?= htmlspecialchars($user['first_name']) ?></td>
-                    <td><?= htmlspecialchars($user['last_name']) ?></td>
-                    <td><?= htmlspecialchars($user['email']) ?></td>
-                    <td><?= htmlspecialchars($user['password']) ?></td>
-                    <td><?= htmlspecialchars($user['ad_status']) ?></td>
-                    <td>
-                        <a href="afficherCommandeAD.php?prenom=<?= urlencode($user['first_name']) ?>&nom=<?= urlencode($user['last_name']) ?>&ou=<?= urlencode($user['organizational_unit']) ?>">
-                            Afficher les instructions
-                        </a>
-                    </td>
-                    <td><?= htmlspecialchars($user['organizational_unit']) ?></td>
-                    <td><?= htmlspecialchars($user['created_at']) ?></td>
-                    <td><?= htmlspecialchars($user['updated_at']) ?></td>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Prénom
+                    </th>
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Mot de passe
+                    </th>
+                    <th>
+                        Statut
+                    </th>
+                    <th>
+                        Instructions
+                    </th>
+                    <th>
+                        Unité Organisationnelle
+                    </th>
+                    <th>
+                        Créé le
+                    </th>
+                    <th>
+                        Mise à jour le
+                    </th>
                 </tr>
-            <?php endforeach; ?>
+            </thead>
+        <tbody
+            <?php foreach ($users as $user): ?>
+            <tr>
+            <td><?= htmlspecialchars($user['id']) ?></td>
+            <td><?= htmlspecialchars($user['first_name']) ?></td>
+            <td><?= htmlspecialchars($user['last_name']) ?></td>
+            <td><?= htmlspecialchars($user['email']) ?></td>
+            <td><?= htmlspecialchars($user['password']) ?></td>
+            <td><?= htmlspecialchars($user['ad_status']) ?></td>
+            <td>
+                <a href="afficherCommandeAD.php?prenom=<?= urlencode($user['first_name']) ?>&nom=<?= urlencode($user['last_name']) ?>&ou=<?= urlencode($user['organizational_unit']) ?>">
+                    Afficher les instructions
+                </a>
+            </td>
+            <td><?= htmlspecialchars($user['organizational_unit']) ?></td>
+            <td><?= htmlspecialchars($user['created_at']) ?></td>
+            <td><?= htmlspecialchars($user['updated_at']) ?></td>
+            </tr>
+        <?php endforeach; ?>
 
-            </tbody>
+        </tbody>
     </table>
     <a href="index.php">Retour à la page d'inscription</a>
     </br>
