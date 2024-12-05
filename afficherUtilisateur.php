@@ -19,54 +19,29 @@ try {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des utilisateurs</title>
+    <title>
+        Liste des utilisateurs
+    </title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
         table {
             border-collapse: collapse;
             width: 100%;
-            margin-top: 20px;
-            font-size: 14px;
+            margin: 20px auto;
         }
 
-        th, td {
-            padding: 12px;
-            text-align: left;
+        th,
+        td {
             border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
         }
 
         th {
             background-color: #f4f4f4;
-            color: #333;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
         }
 
         tr:hover {
@@ -74,41 +49,85 @@ try {
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h2>Liste des utilisateurs</h2>
-        <table>
-            <thead>
+    <h1>
+        Liste des utilisateurs
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Prénom
+                </th>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Mot de passe
+                </th>
+                <th>
+                    Statut
+                </th>
+                <th>
+                    Instructions
+                </th>
+                <th>
+                    Unité Organisationnelle
+                </th>
+                <th>
+                    Créé le
+                </th>
+                <th>
+                    Mise à jour le
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
                 <tr>
-                    <th>ID</th>
-                    <th>Prénom</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Mot de passe</th>
-                    <th>Statut</th>
-                    <th>Instructions</th>
-                    <th>Unité Organisationnelle</th>
-                    <th>Créé le</th>
-                    <th>Mise à jour le</th>
+                    <td>
+                        <?= htmlspecialchars($user['id']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['first_name']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['last_name']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['email']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['password']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['ad_status']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['ad_instructions']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['organizational_unit']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['created_at']) ?>
+                    </td>
+                    <td>
+                        <?= htmlspecialchars($user['updated_at']) ?>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($users as $user): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($user['id']) ?></td>
-                        <td><?= htmlspecialchars($user['first_name']) ?></td>
-                        <td><?= htmlspecialchars($user['last_name']) ?></td>
-                        <td><?= htmlspecialchars($user['email']) ?></td>
-                        <td><?= htmlspecialchars($user['password']) ?></td>
-                        <td><?= htmlspecialchars($user['ad_status']) ?></td>
-                        <td><?= htmlspecialchars($user['ad_instructions']) ?></td>
-                        <td><?= htmlspecialchars($user['organizational_unit']) ?></td>
-                        <td><?= htmlspecialchars($user['created_at']) ?></td>
-                        <td><?= htmlspecialchars($user['updated_at']) ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <a href="index.php">Retour à la page d'inscription</a>
+    <a href="csv.html">CSV</a>
 </body>
+
 </html>
