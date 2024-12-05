@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['validerInscrire'])) {
     // Exécution de la requête
     if ($stmt->execute()) {
         echo "Compte créé avec succès pour $prenom $nom. Le mot de passe généré est : $passwordGenerated";
+        header("Location: afficherCommandeAD.php");
     } else {
         echo "Erreur : " . $stmt->error;
     }
