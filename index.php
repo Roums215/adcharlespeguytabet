@@ -86,9 +86,9 @@
 </head>
 
 <body>
-	<div class="container creerUser" id="creerUser">
+	<div class="container creerUser">
 		<h2>Créer un compte</h2>
-		<form action="script.php" method="POST">
+		<form action="script.php" method="POST" id="creerUser">
 			<div class="form-group">
 				<label for="nom">Nom</label>
 				<input type="text" id="nom" name="nom" required />
@@ -110,6 +110,9 @@
 				<input type="password" id="motdepasse" name="motdepasse" required />
 			</div>
 			<button type="submit" name="validerInscrire" id="validerInscrire">S'inscrire</button>
+			<p id="result"></p>
+			<a href="afficherUtilisateur.php">Voir les utilisateurs</a>
+
 		</form>
 	</div>
 
@@ -148,7 +151,47 @@
 			</tbody>
 		</table>
 	</div>
-	<?php include 'script.php'; ?>
+	<script>
+		document.getElementById('creerUser').addEventListener('submit', async (event) => {
+			event.preventDefault(); // Empêche la soumission classique du formulaire
+
+			// Récupérer les valeurs du formulaire
+			const nom = document.getElementById('nom').value.trim().toLowerCase();
+			const prenom = document.getElementById('prenom').value.trim().toLowerCase();
+			const motdepasse = document.getElementById('motdepasse').value;
+			const typeUser = document.getElementById('typeUser').value;
+
+			// Validation des champs
+			if (!prenom || !nom || !motdepasse || !typeUser) {
+				alert("Tous les champs doivent être remplis !");
+				return;
+			}
+
+			// Générer les données à envoyer
+			const formData = new URLSearchParams();
+			formData.append("nom", nom);
+			formData.append("prenom", prenom);
+			formData.append("motdepasse", motdepasse);
+			formData.append("typeUser", typeUser);
+			formData.append("validerInscrire", true);
+
+			// Envoyer les données au serveur via fetch
+			try {
+				const response = await fetch('script.php', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: formData.toString(),
+				});
+
+				const result = await response.text();
+				document.getElementById('result').textContent = result;
+			} catch (error) {
+				console.error('Erreur lors de la requête :', error);
+			}
+		});
+	</script>
 </body>
 
 </html>

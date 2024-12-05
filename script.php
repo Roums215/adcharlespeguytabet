@@ -1,9 +1,4 @@
 <?php
-// Activer l'affichage des erreurs pour le débogage
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // INFOS BASE DE DONNEES
 $servername = "mysql-hamdaouirayan.alwaysdata.net";
 $username = "351256";
@@ -35,14 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['validerInscrire'])) {
     $mot_de_passe = $_POST["motdepasse"];
     $organizational_unit = $_POST["typeUser"];
 
-
     $stmt->bind_param("ssssss", $id, $nom, $prenom, $email, $mot_de_passe, $organizational_unit);
 
     if ($stmt->execute()) {
-        echo "New user created successfully";
-        header("Location: index.php");
+        echo "Compte créé avec succès pour $prenom $nom.";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "Erreur : " . $stmt->error;
     }
 
     $stmt->close();
