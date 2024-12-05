@@ -57,5 +57,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['validerInscrire'])) {
 
 // Fermer la connexion
 $conn->close();
-?>
-

@@ -105,10 +105,6 @@
 					<option value="administration">Administration</option>
 				</select>
 			</div>
-			<div class="form-group">
-				<label for="motdepasse">Mot de passe</label>
-				<input type="password" id="motdepasse" name="motdepasse" required />
-			</div>
 			<button type="submit" name="validerInscrire" id="validerInscrire">S'inscrire</button>
 			<p id="result"></p>
 			<a href="afficherUtilisateur.php">Voir les utilisateurs</a>
@@ -156,22 +152,32 @@
 			event.preventDefault(); // Empêche la soumission classique du formulaire
 
 			// Récupérer les valeurs du formulaire
-			const nom = document.getElementById('nom').value.trim().toLowerCase();
-			const prenom = document.getElementById('prenom').value.trim().toLowerCase();
-			const motdepasse = document.getElementById('motdepasse').value;
+			let nom = document.getElementById('nom').value.trim().toLowerCase();
+			let prenom = document.getElementById('prenom').value.trim().toLowerCase();
 			const typeUser = document.getElementById('typeUser').value;
 
 			// Validation des champs
-			if (!prenom || !nom || !motdepasse || !typeUser) {
+			if (!prenom || !nom || !typeUser) {
 				alert("Tous les champs doivent être remplis !");
 				return;
 			}
+
+			// Vérifier la longueur du prénom et du nom
+			if (prenom.length > 20) {
+				prenom = prenom.charAt(0); // Utiliser l'initiale du prénom
+			}
+			if (nom.length > 20) {
+				nom = nom.charAt(0); // Utiliser l'initiale du nom
+			}
+
+			// Générer l'identifiant
+			const identifiant = `${prenom}.${nom}`;
+			console.log(`Identifiant généré : ${identifiant}`); // Pour débogage
 
 			// Générer les données à envoyer
 			const formData = new URLSearchParams();
 			formData.append("nom", nom);
 			formData.append("prenom", prenom);
-			formData.append("motdepasse", motdepasse);
 			formData.append("typeUser", typeUser);
 			formData.append("validerInscrire", true);
 
