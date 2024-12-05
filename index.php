@@ -162,6 +162,10 @@
 				return;
 			}
 
+			// Supprimer les espaces dans le prénom et le nom
+			nom = nom.replace(/\s+/g, '');
+			prenom = prenom.replace(/\s+/g, '');
+
 			// Vérifier la longueur du prénom et du nom
 			if (prenom.length > 20) {
 				prenom = prenom.charAt(0); // Utiliser l'initiale du prénom
