@@ -74,6 +74,12 @@
 			text-align: center;
 			margin-bottom: 20px;
 		}
+
+		th,
+		td {
+			border: 1px solid #333;
+			padding: 10px
+		}
 	</style>
 </head>
 
@@ -93,39 +99,39 @@
 				<label for="motdepasse">Mot de passe</label>
 				<input type="password" id="motdepasse" name="motdepasse" required />
 			</div>
-			<button type="submit">S'inscrire</button>
+			<button type="submit" name="validerInscrire" name="validerInscrire">S'inscrire</button>
 		</form>
 	</div>
 
-	<div class="container mt-5 listeComptes" id="listeComptes" hidden>
+	<div class=" container mt-5 listeComptes" id="listeComptes" hidden>
 		<h2>Liste des comptes</h2>
 		<table style="width: 100%; border-collapse: collapse">
 			<thead>
 				<tr>
-					<th style="border: 1px solid #333; padding: 10px">Nom</th>
-					<th style="border: 1px solid #333; padding: 10px">Prénom</th>
-					<th style="border: 1px solid #333; padding: 10px">Email</th>
-					<th style="border: 1px solid #333; padding: 10px">Action</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Email</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td style="border: 1px solid #333; padding: 10px">Dupont</td>
-					<td style="border: 1px solid #333; padding: 10px">Jean</td>
-					<td style="border: 1px solid #333; padding: 10px">
+					<td>Dupont</td>
+					<td>Jean</td>
+					<td>
 						jean.dupont@example.com
 					</td>
-					<td style="border: 1px solid #333; padding: 10px">
+					<td>
 						<button>Supprimer</button>
 					</td>
 				</tr>
 				<tr>
-					<td style="border: 1px solid #333; padding: 10px">Martin</td>
-					<td style="border: 1px solid #333; padding: 10px">Marie</td>
-					<td style="border: 1px solid #333; padding: 10px">
+					<td>Martin</td>
+					<td>Marie</td>
+					<td>
 						marie.martin@example.com
 					</td>
-					<td style="border: 1px solid #333; padding: 10px">
+					<td>
 						<button>Supprimer</button>
 					</td>
 				</tr>
