@@ -16,6 +16,14 @@
 			color: #ffffff;
 		}
 
+		.lien{
+			color: #4a90e2;
+			text-decoration: none;
+			display: block;
+			text-align: center;
+			margin-top: 10px;
+		}
+
 		.creerUser {
 			background-color: #1e1e1e;
 			padding: 30px;
@@ -107,7 +115,7 @@
 			</div>
 			<button type="submit" name="validerInscrire" id="validerInscrire">S'inscrire</button>
 			<p id="result"></p>
-			<a href="afficherUtilisateur.php">Voir les utilisateurs</a>
+			<a href="afficherUtilisateur.php" class="lien">Voir les utilisateurs</a>
 
 		</form>
 	</div>
